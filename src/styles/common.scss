@@ -1,0 +1,211 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  outline: none;
+}
+$tz-red:#E33038;
+$tz-blue:#009EFF;
+$tz-th-gray:#F8F8F8;
+
+.hidden{
+  display: none;
+}
+.content_box{
+  position: relative;
+  background: white;
+  height: auto;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  &::after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .content_title{
+    height: 45px;
+    line-height: 45px;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 1px solid #ccc;
+    img{
+      margin-right: 5px;
+      min-width: 20px;
+    }
+    .tag{
+      display: inline-block;
+      background: $tz-blue;
+      font-size: 14px;
+      color: white;
+      height: 25px;
+      font-weight: normal;
+      line-height: 25px;
+      margin-left: 15px;
+      cursor: pointer;
+      padding: 0px 10px;
+      float: right;
+      margin-top: 10px;
+    }
+  }
+  .form_box{
+    padding:25px 20px 15px 20px;
+    box-sizing: border-box;
+    &::after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .input_box{
+      width: 25%;
+      height: 35px;
+      float: left;
+      padding: 15px 0;
+      position: relative;
+      &[data-veri] > span > i{
+        display: inline-block;
+      }
+      &>span{
+        float: left;
+        width: 40%;
+        vertical-align: middle;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        i{
+          display: none;
+        }
+        i::before{
+          content: '*';
+          line-height: 40px;
+          position: absolute;
+          top: 16px;
+          margin-left: -10px;
+          color: red;
+        }
+      }
+      &>div{
+        display: inline-block;
+        width: 60%;
+      }
+      &>label{
+        display: inline-block;
+        margin-top: 11px;
+        width: 30%;
+        float: left;
+        margin-right: 0px;
+        span{
+          font-size: 16px;
+        }
+      }
+      .error_tip{
+        color: red;
+        position: absolute;
+        bottom: -23px;
+        left: 30%;
+        text-align: left;
+        text-indent: 17px;
+      }
+    }
+    &>div.btn_box{
+      position: relative;
+      float: left;
+      margin-left: 22px;
+      margin-top: 20px;
+      button{
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 30px;
+        letter-spacing: 10px;
+        text-indent: 10px;
+      }
+      .search{
+        background: $tz-red;
+        color: white;
+        border: 1px solid $tz-red;
+        margin-right: 25px;
+      }
+      .clear{
+        background: white;
+        color: $tz-red;
+        border: 1px solid $tz-red;
+        border: 1px solid $tz-red;
+      }
+    }
+  }
+  &>span.btn_box{
+    display: inline-block;
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: -20px;
+    .search{
+      display: inline-block;
+      width: 100px;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      background: #F01B00;
+      color: white;
+      border-radius: 30px;
+      letter-spacing: 10px;
+      text-indent: 10px;
+      border: 1px solid #F01B00;
+      margin-right: 25px;
+    }
+    .clear{
+      display: inline-block;
+      width: 100px;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      background: white;
+      color: #F01B00;
+      border: 1px solid #F01B00;
+      border-radius: 30px;
+      letter-spacing: 10px;
+      text-indent: 10px;
+      border: 1px solid #F01B00;
+    }
+  }
+  .table_srocll{
+    width: 100%;
+    font-size: 16px;
+    table{
+      width:100%;
+      text-align:center;
+      border-collapse:collapse;
+      border-spacing:0;
+      tr{
+        border-bottom: 1px solid #DDDDDD;
+        th{
+          background: $tz-th-gray;
+          font-weight: bold!important;
+          padding: 10px 0px;
+          color: #373A3C;
+        }
+        td{
+          padding: 10px 0px;
+        }
+      }
+      .el-radio__label{
+        display: none;
+      }
+      .el-radio{
+        margin-right: 5px;
+      }
+    }
+  }
+  .pag_box{
+    display: inline-block;
+    float: right;
+    padding: 15px 0;
+  }
+}

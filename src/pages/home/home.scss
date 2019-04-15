@@ -1,0 +1,32 @@
+.header{
+  height: 70px;
+  border-bottom: 1px solid black;
+}
+.sider{
+  border-right: 1px solid black;
+  width: 200px;
+  height: calc(100vh - 71px);
+  float: left;
+  div{
+    text-align: center;
+    padding: 5px 0;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+  }
+}
+.top{
+  float: left;
+  width: calc(100% - 201px);
+  height: 32px;
+  border-bottom: 1px solid black;
+}
+.frame{
+  float: left;
+  width: calc(100% - 201px);
+  height: calc(100vh - 104px);
+  padding: 15px 10px;
+  box-sizing: border-box;
+  background: #F4F4F4;
+  box-shadow: 1px 1px 4px rgba(0,0,0,1);
+  overflow-y: auto;
+}
