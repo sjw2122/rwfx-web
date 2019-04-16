@@ -5,49 +5,49 @@
         <div class="form_box">
 
           <div class="input_box" data-veri="">
-            <span><i></i>姓名：</span>
+            <div class="input_name"><span><i></i>姓名：</span></div>
             <a-input placeholder="请输入姓名" v-model="text1"/>
             <span class="error_tip hidden">请输入姓名！</span>
           </div>
           <div class="input_box">
-            <span><i></i>性别：</span>
+            <div class="input_name"><span><i></i>性别：</span></div>
             <a-select defaultValue="男" v-model="gender" :getPopupContainer="getPopupContainer">
               <a-select-option value="男">男</a-select-option>
               <a-select-option value="女">女</a-select-option>
             </a-select>
           </div>
           <div class="input_box">
-            <span><i></i>人物类别：</span>
+            <div class="input_name"><span><i></i>人物类别：</span></div>
             <a-input placeholder="请输入内容" v-model="text2"/>
           </div>
           <div class="input_box">
-            <span><i></i>面貌：</span>
+            <div class="input_name"><span><i></i>面貌：</span></div>
             <a-input placeholder="Basic usage"/>
           </div>
           <div class="input_box">
-            <span><i></i>时间：</span>
+            <div class="input_name"><span><i></i>时间：</span></div>
             <a-date-picker :locale=$store.state.locale />
           </div>
           <div class="input_box">
-            <span><i></i>单选：</span>
+            <div class="input_name"><span><i></i>单选：</span></div>
             <a-radio-group>
               <a-radio value="1">A</a-radio>
               <a-radio value="2">B</a-radio>
             </a-radio-group>
           </div>
           <div class="input_box">
-            <span><i></i>单选：</span>
+            <div class="input_name"><span><i></i>单选：</span></div>
             <a-radio-group>
               <a-radio value="1">备选1</a-radio>
               <a-radio value="2">备选2</a-radio>
             </a-radio-group>
           </div>
           <div class="input_box">
-            <span><i></i>时间：</span>
+            <div class="input_name"><span><i></i>时间：</span></div>
             <a-date-picker />
           </div>
           <div class="input_box">
-            <span><i></i>时间：</span>
+            <div class="input_name"><span><i></i>时间：</span></div>
             <a-date-picker />
           </div>
           <div class="btn_box">

@@ -23,7 +23,8 @@ import { Radio } from 'ant-design-vue';
 Vue.use(Radio);
 import { Pagination } from 'ant-design-vue';
 Vue.use(Pagination);
-
+import { InputNumber } from 'ant-design-vue';
+Vue.use(InputNumber);
 
 
 
