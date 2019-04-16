@@ -5,9 +5,28 @@ import App from './App'
 import router from './router'
 import api from './api/api.js'
 import store from './store/index'
-import Element from 'element-ui';
-import './styles/element-variables.scss';
-Vue.use(Element);
+/*import Element from 'element-ui'
+import './styles/element-variables.scss'
+Vue.use(Element);*/
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+moment.locale('zh-cn');
+import { LocaleProvider } from 'ant-design-vue';
+Vue.use(LocaleProvider);
+import { Input } from 'ant-design-vue';
+Vue.use(Input);
+import { Select } from 'ant-design-vue';
+Vue.use(Select);
+import { DatePicker } from 'ant-design-vue';
+Vue.use(DatePicker);
+import { Radio } from 'ant-design-vue';
+Vue.use(Radio);
+import { Pagination } from 'ant-design-vue';
+Vue.use(Pagination);
+
+
+
+
 
 
 Vue.prototype.$api = api

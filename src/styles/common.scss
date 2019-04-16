@@ -4,13 +4,34 @@
   font-size: 16px;
   outline: none;
 }
+/**
+*
+*
+*   通用颜色
+*/
 $tz-red:#E33038;
 $tz-blue:#009EFF;
 $tz-th-gray:#F8F8F8;
-
+/**
+*
+*
+*   通用class样式
+*/
+.el-select .el-input__inner {
+  font-size: 18px!important;
+}
 .hidden{
   display: none;
 }
+.height15{
+  height: 15px;
+  display: block;
+}
+/**
+*
+*
+*   页面表单通用样式
+*/
 .content_box{
   position: relative;
   background: white;
@@ -30,7 +51,7 @@ $tz-th-gray:#F8F8F8;
     font-weight: bold;
     padding-left: 20px;
     padding-right: 20px;
-    border-bottom: 1px solid #ccc;
+    //border-bottom: 1px solid #ccc;
     img{
       margin-right: 5px;
       min-width: 20px;
@@ -48,94 +69,6 @@ $tz-th-gray:#F8F8F8;
       padding: 0px 10px;
       float: right;
       margin-top: 10px;
-    }
-  }
-  .form_box{
-    padding:25px 20px 15px 20px;
-    box-sizing: border-box;
-    &::after{
-      content: '';
-      display: block;
-      clear: both;
-    }
-    .input_box{
-      width: 25%;
-      height: 35px;
-      float: left;
-      padding: 15px 0;
-      position: relative;
-      &[data-veri] > span > i{
-        display: inline-block;
-      }
-      &>span{
-        float: left;
-        width: 40%;
-        vertical-align: middle;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        i{
-          display: none;
-        }
-        i::before{
-          content: '*';
-          line-height: 40px;
-          position: absolute;
-          top: 16px;
-          margin-left: -10px;
-          color: red;
-        }
-      }
-      &>div{
-        display: inline-block;
-        width: 60%;
-      }
-      &>label{
-        display: inline-block;
-        margin-top: 11px;
-        width: 30%;
-        float: left;
-        margin-right: 0px;
-        span{
-          font-size: 16px;
-        }
-      }
-      .error_tip{
-        color: red;
-        position: absolute;
-        bottom: -23px;
-        left: 30%;
-        text-align: left;
-        text-indent: 17px;
-      }
-    }
-    &>div.btn_box{
-      position: relative;
-      float: left;
-      margin-left: 22px;
-      margin-top: 20px;
-      button{
-        display: inline-block;
-        width: 100px;
-        text-align: center;
-        height: 30px;
-        line-height: 30px;
-        border-radius: 30px;
-        letter-spacing: 10px;
-        text-indent: 10px;
-      }
-      .search{
-        background: $tz-red;
-        color: white;
-        border: 1px solid $tz-red;
-        margin-right: 25px;
-      }
-      .clear{
-        background: white;
-        color: $tz-red;
-        border: 1px solid $tz-red;
-        border: 1px solid $tz-red;
-      }
     }
   }
   &>span.btn_box{
@@ -156,9 +89,10 @@ $tz-th-gray:#F8F8F8;
       color: white;
       border-radius: 30px;
       letter-spacing: 10px;
-      text-indent: 10px;
       border: 1px solid #F01B00;
       margin-right: 25px;
+      background: url("../static/imgs/common/search.png") no-repeat 12px 50% / 15px 15px $tz-red;
+      text-indent: 25px;
     }
     .clear{
       display: inline-block;
@@ -175,37 +109,260 @@ $tz-th-gray:#F8F8F8;
       border: 1px solid #F01B00;
     }
   }
-  .table_srocll{
-    width: 100%;
-    font-size: 16px;
-    table{
-      width:100%;
-      text-align:center;
-      border-collapse:collapse;
-      border-spacing:0;
-      tr{
-        border-bottom: 1px solid #DDDDDD;
-        th{
-          background: $tz-th-gray;
-          font-weight: bold!important;
-          padding: 10px 0px;
-          color: #373A3C;
+}
+.form_box{
+  padding:25px 20px 25px 20px;
+  box-sizing: border-box;
+  &::after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+  &.input2_button{
+    .input_box{
+      width: calc((100% - 100px)/2);
+      &.long{
+        &>span{
+          width: calc((100% + 50px)/5);
         }
-        td{
-          padding: 10px 0px;
+        &>div{
+          width: calc(100% - (100% + 50px)/5);
+        }
+        &>input{
+          width: calc(100% - (100% + 50px)/5);
         }
       }
-      .el-radio__label{
-        display: none;
+      &>span{
+        width: 100px;
+        font-size: 16px;
       }
-      .el-radio{
-        margin-right: 5px;
+      &>div{
+        display: inline-block;
+        width: calc(100% - 100px);
+        font-size: 16px;
+      }
+      &>input{
+        display: inline-block;
+        width: calc(100% - 100px);
+        font-size: 16px;
+      }
+    }
+    button{
+      float: left;
+      width: 80px;
+      margin-left: 20px;
+      height: 40px;
+      border: 1px solid $tz-blue;
+      color: $tz-blue;
+      background: white;
+      cursor: pointer;
+    }
+  }
+  &.input3{
+    .input_box{
+      width: calc(100%/3);
+      &:first-child{
+        &>span{
+          width: calc(100%*3/10);
+        }
+        &>div{
+          width: calc(100% - 100%*3/10);
+        }
       }
     }
   }
-  .pag_box{
-    display: inline-block;
-    float: right;
-    padding: 15px 0;
+  .input_box{
+    width: 25%;
+    height: 40px;
+    float: left;
+    position: relative;
+    margin-bottom: 20px;
+    &::after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    &[data-veri] > span > i{
+      display: inline-block;
+    }
+    &>span{
+      float: left;
+      width: 40%;
+      vertical-align: middle;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      i{
+        display: none;
+      }
+      i::before{
+        content: '*';
+        line-height: 40px;
+        position: absolute;
+        top: 3px;
+        margin-left: -10px;
+        color: red;
+      }
+    }
+    &>span.ant-calendar-picker{
+      display: inline-block;
+      width: 60%;
+      height: 40px;
+      .ant-calendar-picker-input{
+        height: 40px;
+      }
+    }
+    &>input{
+      display: inline-block;
+      width: 60%;
+      height: 40px;
+      font-size: 16px;
+    }
+    &>div{
+      font-size: 16px;
+      display: inline-block;
+      width: 60%;
+      height: 40px;
+      &.ant-radio-group{
+        line-height: 40px;
+        lable{
+          margin-right: 0px;
+        }
+      }
+      .ant-select-selection{
+        height: 40px;
+      }
+      .ant-select-selection__rendered{
+        line-height: 40px;
+      }
+    }
+    &>label{
+      font-size: 16px;
+      display: inline-block;
+      margin-top: 11px;
+      width: 30%;
+      float: left;
+      margin-right: 0px;
+      span{
+        font-size: 16px;
+      }
+    }
+    .error_tip{
+      color: red;
+      position: absolute;
+      bottom: -23px;
+      left: 30%;
+      text-align: left;
+      text-indent: 17px;
+    }
+  }
+  &>div.btn_box{
+    position: relative;
+    float: left;
+    margin-left: 32px;
+    margin-top: 5px;
+    button{
+      display: inline-block;
+      width: 100px;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 30px;
+      letter-spacing: 10px;
+      text-indent: 10px;
+      cursor: pointer;
+    }
+    .search{
+      color: white;
+      border: 1px solid $tz-red;
+      margin-right: 25px;
+      background: url("../static/imgs/common/search.png") no-repeat 12px 50% / 15px 15px $tz-red;
+      text-indent: 25px;
+    }
+    .clear{
+      background: white;
+      color: $tz-red;
+      border: 1px solid $tz-red;
+      border: 1px solid $tz-red;
+    }
+  }
+}
+.table_srocll{
+  width: 100%;
+  font-size: 16px;
+  &.border{
+    table{
+      border: 1px solid #DDDDDD;
+      margin-bottom: 30px;
+    }
+  }
+  table{
+    width:100%;
+    text-align:center;
+    border-collapse:collapse;
+    border-spacing:0;
+    tr{
+      border-bottom: 1px solid #DDDDDD;
+      th{
+        background: $tz-th-gray;
+        font-weight: bold!important;
+        padding: 10px 0px;
+        color: #373A3C;
+      }
+      td{
+        padding: 10px 0px;
+      }
+    }
+    input[type='radio']{
+      vertical-align: 2px;
+      margin-right: 5px;
+    }
+    input[type='checkbox']{
+      margin-right: 5px;
+    }
+  }
+}
+.ant-calendar-picker-input{
+  font-size: 16px;
+}
+/**
+*
+*
+*   组件样式修改
+*/
+.collection_item {
+  .ant-select{
+    border: 0px;
+    width: 100%;
+    height: 80px;
+    .ant-select-selection{
+      border: 0px;
+      height: 78px;
+      .ant-select-selection__rendered{
+        border: 0px;
+        line-height: 78px;
+        margin: 0;
+        background: #F7F7F7;
+      }
+      .ant-select-selection-selected-value{
+        width: 100%;
+      }
+    }
+  }
+  .active{
+    .ant-select-selection__rendered{
+      background: #D8F0FF!important;
+      border:1px solid #009EFF;
+    }
+    .ant-select-selection-selected-value{
+      color: #009EFF;
+    }
+    .ant-select-arrow{
+      color: #009EFF;
+    }
+  }
+  .ant-select-selection__placeholder{
+    text-align: center;
+    color: #373A3C;
   }
 }

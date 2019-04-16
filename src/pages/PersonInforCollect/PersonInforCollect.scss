@@ -1,0 +1,135 @@
+.content_box:first-child{
+    background: url("../../../static/imgs/common/content_search.png") no-repeat 100% 50% / 160px 130px white;
+}
+.content_box:nth-child(2){
+  margin-top: -20px;
+  border-top: 1px solid #DDDDDD;
+  padding-bottom: 100px;
+  height: calc(100vh - 315px);
+}
+.text_box{
+  margin-top: 20px;
+  line-height: 15px;
+  padding-left: 65px;
+  span{
+    color: red;
+    cursor: pointer;
+  }
+}
+
+/**
+*
+*
+*   采集内容样式
+*/
+.collection_box{
+  height: auto;
+  background: white;
+  padding: 25px;
+  .collection_title{
+    height: 70px;
+    border-bottom: 1px solid #DDDDDD;
+    .collection_text{
+      position: relative;
+      width: 33%;
+      text-align: center;
+      display: inline-block;
+      height: 70px;
+      font-size: 20px;
+      line-height: 55px;
+      color: #544E4E;
+      img{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 10px;
+        margin-left: -40px;
+        background: url(../../../static/imgs/common/num_2.png) no-repeat 0 0 / 30px 30px;
+      }
+      &.active{
+        color: #009EFF;
+        img{
+          &:nth-child(2){
+            display: inline-block;
+          }
+        }
+      }
+      &.border_bottom{
+        border-bottom: 2px solid #009EFF;
+      }
+      img{
+        &:nth-child(2){
+          display: none;
+        }
+      }
+    }
+  }
+  .collection_content{
+    height: auto;
+    margin-top: 20px;
+    padding: 0px 80px;
+    margin-bottom: 100px;
+    &::after{
+      content: '';
+      display: block;
+      height: 1px;
+      clear: both;
+    }
+    .collection_content_title{
+      color: #909090;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .collection_item{
+      width: calc((100% - 160px)/5);
+      height: 80px;
+      float: left;
+      padding-right: 30px;
+      margin-bottom: 20px;
+      &>div{
+        position: relative;
+        height: 80px;
+        border:1px solid #DDD8D8;
+        background: #F7F7F7;
+        text-align: center;
+        &.active{
+          background: #D8F0FF;
+          border:1px solid #009EFF;
+          span{
+            color: #007FCC;
+          }
+        }
+        &:hover{
+          border: 1px solid #009EFF;
+        }
+        span{
+          color: #373A3C;
+          font-size: 18px;
+          display: inline-block;
+          text-align: center;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+  .collection_button{
+    position: relative;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    color: white;
+    border-radius: 100px;
+    background: #009EFF;
+    line-height: 40px;
+    font-size: 18px;
+    letter-spacing: 10px;
+    text-indent: 10px;
+    left: 50%;
+    bottom:20px;
+    cursor: pointer;
+    margin-left: -125px;
+  }
+}
+

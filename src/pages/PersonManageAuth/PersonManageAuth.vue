@@ -6,56 +6,49 @@
 
           <div class="input_box" data-veri="">
             <span><i></i>姓名：</span>
-            <el-input v-model="text1" placeholder="请输入内容"></el-input>
+            <a-input placeholder="请输入姓名" v-model="text1"/>
             <span class="error_tip hidden">请输入姓名！</span>
           </div>
           <div class="input_box">
             <span><i></i>性别：</span>
-            <el-select v-model="gender" placeholder="请选择">
-              <el-option
-                v-for="item in genderList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-              </el-option>
-            </el-select>
+            <a-select defaultValue="男" v-model="gender" :getPopupContainer="getPopupContainer">
+              <a-select-option value="男">男</a-select-option>
+              <a-select-option value="女">女</a-select-option>
+            </a-select>
           </div>
           <div class="input_box">
             <span><i></i>人物类别：</span>
-            <el-input v-model="text2" placeholder="请输入内容"></el-input>
+            <a-input placeholder="请输入内容" v-model="text2"/>
           </div>
           <div class="input_box">
             <span><i></i>面貌：</span>
-            <el-select v-model="select_value" placeholder="请选择">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-              </el-option>
-            </el-select>
+            <a-input placeholder="Basic usage"/>
           </div>
           <div class="input_box">
             <span><i></i>时间：</span>
-            <el-date-picker type="date" placeholder="选择日期" v-model="date"></el-date-picker>
+            <a-date-picker :locale=$store.state.locale />
           </div>
           <div class="input_box">
             <span><i></i>单选：</span>
-            <el-radio v-model="radio" label="1">备选项</el-radio>
-            <el-radio v-model="radio" label="2">备选项</el-radio>
+            <a-radio-group>
+              <a-radio value="1">A</a-radio>
+              <a-radio value="2">B</a-radio>
+            </a-radio-group>
           </div>
           <div class="input_box">
             <span><i></i>单选：</span>
-            <el-radio v-model="radio" label="1">备选项</el-radio>
-            <el-radio v-model="radio" label="2">备选项</el-radio>
+            <a-radio-group>
+              <a-radio value="1">备选1</a-radio>
+              <a-radio value="2">备选2</a-radio>
+            </a-radio-group>
           </div>
           <div class="input_box">
             <span><i></i>时间：</span>
-            <el-date-picker type="date" placeholder="选择日期" v-model="date"></el-date-picker>
+            <a-date-picker />
           </div>
           <div class="input_box">
             <span><i></i>时间：</span>
-            <el-date-picker type="date" placeholder="选择日期" v-model="date"></el-date-picker>
+            <a-date-picker />
           </div>
           <div class="btn_box">
             <button class="search">查询</button>
@@ -86,7 +79,11 @@
               <th>籍贯</th>
             </tr>
             <tr v-for="(item,key) in tableData">
-              <td><el-radio v-model="selected" :label="key"></el-radio>{{key+1}}</td>
+              <td>
+                <a-radio-group @change="radioChange(key)" v-model="radio">
+                  <a-radio :value="key"></a-radio>
+                </a-radio-group>
+                </a-radio>{{key+1}}</td>
               <td>{{item.name}}</td>
               <td>{{item.date}}</td>
               <td>{{item.address}}</td>
@@ -95,7 +92,6 @@
               <td>{{item.data2}}</td>
             </tr>
           </table>
-
           <!--<el-table :data="tableData">
             <el-table-column type="index" :index="indexMethod" label="序号"></el-table-column>
             <el-table-column prop="name" label="姓名"></el-table-column>
@@ -106,20 +102,32 @@
             <el-table-column prop="data2" label="籍贯"></el-table-column>
           </el-table>-->
         </div>
-        <span class="pag_box">
-          <el-pagination background layout="prev, pager, next" :total="1000" @current-change="currentChange"></el-pagination>
-        </span>
+        <Pagination
+          :total="pagination.totalCount"
+          :pageSize="pagination.pageSize"
+          :current="pagination.pageNo"
+          @onChange="onChangePage"
+          @onShowSizeChange="onShowSizeChangePage"
+        ></Pagination>
       </div>
     </div>
 </template>
 <script type="es6">
+    import Pagination from '../../components/pagination.vue'
     export default {
+      components: { Pagination },
       data () {
         return {
+          pagination: {
+            pageNo: 1,
+            pageSize: 10,
+            totalCount: 50
+          },
           text1:'',
           text2:'',
           selected:0,
           tableData: [{
+            radio:true,
             date: '2016-05-02',
             name: '张三',
             address: '宁波',
@@ -127,6 +135,7 @@
             data1:'汉族',
             data2:'宁波'
           },{
+            radio:false,
             date: '2016-05-02',
             name: '张三',
             address: '宁波',
@@ -134,6 +143,7 @@
             data1:'汉族',
             data2:'宁波'
           },{
+            radio:false,
             date: '2016-05-02',
             name: '张三',
             address: '宁波',
@@ -141,6 +151,7 @@
             data1:'汉族',
             data2:'宁波'
           },{
+            radio:false,
             date: '2016-05-02',
             name: '张三',
             address: '宁波',
@@ -148,13 +159,7 @@
             data1:'汉族',
             data2:'宁波'
           },{
-            date: '2016-05-02',
-            name: '张三',
-            address: '宁波',
-            gender: '男',
-            data1:'汉族',
-            data2:'宁波'
-          },{
+            radio:false,
             date: '2016-05-02',
             name: '张三',
             address: '宁波',
@@ -180,7 +185,7 @@
             label: 'c'
           }],
           date:'',
-          radio:''
+          radio:0
         }
       },
       created () {
@@ -189,7 +194,23 @@
       methods: {
         currentChange(val){
           console.log(val);
-        }
+        },
+        getPopupContainer (trigger) {
+          return trigger.parentElement
+        },
+        radioChange(key){
+          this.radio = key;
+        },
+        onChangePage (pageNo, pageSize) {
+          this.pagination.pageNo = pageNo;
+          console.log(pageNo);
+          // 重新请求数据
+        },
+        onShowSizeChangePage (pageNo, pageSize) {
+          this.pagination.pageSize = pageSize;
+          console.log(pageSize);
+          // 重新请求数据
+        },
       }
     }
 
