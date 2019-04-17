@@ -113,6 +113,7 @@
     </div>
 </template>
 <script type="es6">
+    import Utils from '../../until/index';
     import Pagination from '../../components/pagination.vue'
     export default {
       components: { Pagination },
@@ -189,7 +190,10 @@
         }
       },
       created () {
-
+        let self = this;
+        Utils.$on('PersonManageAuth', function () {
+          self.text1 = null;
+        })
       },
       methods: {
         currentChange(val){
@@ -210,7 +214,7 @@
           this.pagination.pageSize = pageSize;
           console.log(pageSize);
           // 重新请求数据
-        },
+        }
       }
     }
 

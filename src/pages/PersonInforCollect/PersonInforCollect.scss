@@ -1,11 +1,11 @@
 .content_box:first-child{
     background: url("../../../static/imgs/common/content_search.png") no-repeat 100% 50% / 160px 130px white;
 }
-.content_box:nth-child(2){
+.content_box.cxjg{
   margin-top: -20px;
   border-top: 1px solid #DDDDDD;
   padding-bottom: 100px;
-  height: calc(100vh - 315px);
+  height: calc(100vh - 365px);
 }
 .text_box{
   margin-top: 20px;
@@ -225,7 +225,7 @@
       }
       &>div{
         float: left;
-        width: calc((100% - 240px)/2);
+        width: calc((100% - 280px)/2);
         font-size: 16px;
         margin-left: 10px;
       }

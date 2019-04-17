@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="content_box" v-show="collection_step == 0">
+      <div class="content_box cxjg" v-show="collection_step == 0">
         <div class="content_title" style="margin-top: 20px;"><img src="">查询结果</div>
         <div class="text_box">
           未查询到符合条件的人员！
@@ -210,7 +210,7 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>出生年月：</span></div>
-                <a-date-picker />
+                <a-date-picker :locale=$store.state.locale />
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>年龄：</span></div>
@@ -228,7 +228,7 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>加入时间(认定时间)：</span></div>
-                <a-date-picker />
+                <a-date-picker :locale=$store.state.locale />
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>入党（社）介绍人(认定人)：</span></div>
@@ -236,7 +236,7 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>参加工作时间：</span></div>
-                <a-date-picker />
+                <a-date-picker :locale=$store.state.locale />
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>是否联谊交友对象：</span></div>
@@ -277,7 +277,7 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>已故时间：</span></div>
-                <a-date-picker />
+                <a-date-picker :locale=$store.state.locale />
               </div>
               <div class="input_box textarea">
                 <div class="input_name"><span><i></i>人物简历：</span></div>
@@ -363,7 +363,7 @@
                     <td>{{key+1}}</td>
                     <td><a-input placeholder="" /></td>
                     <td><a-input placeholder="" /></td>
-                    <td><a-date-picker /></td>
+                    <td><a-date-picker :locale=$store.state.locale /></td>
                   </tr>
                 </table>
               </div>
@@ -379,7 +379,7 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>任现技术职称时间：</span></div>
-                <a-date-picker />
+                <a-date-picker :locale=$store.state.locale />
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>特殊人才：</span></div>
@@ -413,7 +413,7 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>任现职级时间：</span></div>
-                <a-date-picker />
+                <a-date-picker :locale=$store.state.locale />
               </div>
             </div>
 
