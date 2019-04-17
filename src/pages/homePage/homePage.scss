@@ -1,0 +1,28 @@
+.homePageHeader{
+  color: #fff;
+  font-size: 16px;
+  //position: fixed;
+  background-image: url('../../../static/imgs/homePage/dq.jpg');
+  height: 100%;
+  width: 100%;
+  //overflow: hidden;
+  //background-size: cover;
+  //background-attachment: fixed;
+}
+.el-menu.el-menu--horizontal{
+  border-bottom: 0!important;
+  //background-color:rgba(255, 255, 255, 0)!important;
+  background: none;
+}
+.homePageCondition-border{
+  border-bottom: 2px solid deepskyblue;
+}
+.homePage-filtrate {
+  //border: 1px solid #fff;
+  //border-radius: 4px;
+  position: absolute;
+  left: 20px;
+  top: 70px;
+  width: 840px;
+  z-index: 999;
+}

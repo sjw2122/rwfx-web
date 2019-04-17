@@ -8,6 +8,7 @@ const form = r => require.ensure([], () => r(require('@/pages/form/form')), 'for
 const home = r => require.ensure([], () => r(require('@/pages/home/home')), 'home');
 const PersonManageAuth = r => require.ensure([], () => r(require('@/pages/PersonManageAuth/PersonManageAuth')), 'PersonManageAuth');
 const PersonInforCollect = r => require.ensure([], () => r(require('@/pages/PersonInforCollect/PersonInforCollect')), 'PersonInforCollect');
+const homePage = r => require.ensure([], () => r(require('@/pages/homePage/homePage')), 'homePage');
 
 Vue.use(Router)
 
@@ -52,6 +53,10 @@ export default new Router({
           path: 'PersonInforCollect',
           name: 'PersonInforCollect',
           component: PersonInforCollect
+        },{
+          path: 'homePage',
+          name: 'homePage',
+          component: homePage
         }
        ]
     }
