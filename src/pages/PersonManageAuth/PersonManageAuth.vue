@@ -83,7 +83,7 @@
                 <a-radio-group @change="radioChange(key)" v-model="radio">
                   <a-radio :value="key"></a-radio>
                 </a-radio-group>
-                </a-radio>{{key+1}}</td>
+                {{key+1}}</td>
               <td>{{item.name}}</td>
               <td>{{item.date}}</td>
               <td>{{item.address}}</td>
