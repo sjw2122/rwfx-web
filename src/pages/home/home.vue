@@ -78,7 +78,7 @@
               {name:'人物信息采集',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[
                   {name:'人物信息采集',url:'PersonInforCollect'},
                   {name:'采集申请列表',url:'PersonManageAuth'},
-                  {name:'人物采集列表',url:''}
+                  {name:'人物采集列表',url:'PersonCollectList'}
                 ]},
               {name:'人物信息查询',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
               {name:'人物信息审批',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
