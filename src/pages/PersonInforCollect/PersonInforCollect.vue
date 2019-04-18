@@ -63,16 +63,21 @@
         -->
         <div class="collection_content" v-show="collection_step == 1">
           <div class="collection_content_title">请选择（可多选）：</div>
-          <div class="collection_item">
+          <!--<div class="collection_item">
             <div :class="{ active: value != null }">
               <a-select defaultValue="男" placeholder="统战" :getPopupContainer="getPopupContainer" allowClear v-model="value">
                 <a-select-option value="男">男</a-select-option>
                 <a-select-option value="女">女</a-select-option>
               </a-select>
             </div>
-          </div>
-          <div class="collection_item" v-for="item of collection_List">
-            <div @click="select_item(item)" :class="{ active: isSelected(item) != -1 }"><span>{{item}}</span></div>
+          </div>-->
+          <div class="collection_item" v-for="(item,key) of collection_List">
+            <div v-if="item.option == false" @click="select_item(key)" :class="{ active: item.selected == true }"><span>{{item.name}}</span></div>
+            <div v-else :class="{ active: item.selected != null }">
+              <a-select :defaultValue="item.option[0].value" placeholder="请选择" :getPopupContainer="getPopupContainer" allowClear v-model="item.selected">
+                <a-select-option v-for="option of item.option" :value="option.value" >{{option.label}}</a-select-option>
+              </a-select>
+            </div>
           </div>
         </div>
         <!--
@@ -418,9 +423,6 @@
             </div>
 
 
-
-
-
           </div>
           <!--联系方式-->
           <div class="infor_content lxfs">
@@ -486,9 +488,17 @@
   export default {
     data () {
       return {
-        collection_step: 0,
-        collection_selected: [],
-        collection_List: ['无党派人士', '党外知识分子', '出国和归国留学人士', '香港同胞、澳门同胞', '台湾同胞及其在大陆的亲属', '华侨、归侨及侨眷', '党外知识分子', '出国和归国留学人士', '香港同胞、澳门同胞', '台湾同胞及其在大陆的亲属', '华侨、归侨及侨眷', '党外知识分子', '出国和归国留学人士', '香港同胞、澳门同胞', '台湾同胞及其在大陆的亲属', '华侨、归侨及侨眷', '党外知识分子'],
+        collection_step: 1,
+        collection_List: [
+          {name:'统战',selected:null,option:[
+            {label:'组织部',value:'11'},
+            {label:'办公室',value:'12'},
+          ]},
+          {name:'无党派人士',selected:null,value:'2',option:[]},
+          {name:'党外知识分子',selected:null,value:'3',option:[]},
+          {name:'出国和归国留学人士',selected:null,value:'4',option:[]},
+          {name:'香港同胞、澳门同胞',selected:null,value:'5',option:[]}
+        ],
         value: null,
         text1:'测试',
         step2_data: {
@@ -524,15 +534,11 @@
       step(num){
         this.collection_step = num;
       },
-      isSelected(val){
-        return this.collection_selected.indexOf(val);
-      },
-      select_item(val){
-        let index = this.collection_selected.indexOf(val);
-        if (index == -1) {
-          this.collection_selected.push(val);
-        } else {
-          this.collection_selected.splice(index, 1);
+      select_item(key){
+        if(this.collection_List[key].selected){
+          this.collection_List[key].selected = false;
+        }else{
+          this.collection_List[key].selected = true;
         }
       },
       collection_confirm(){

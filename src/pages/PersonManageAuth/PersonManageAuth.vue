@@ -11,7 +11,7 @@
           </div>
           <div class="input_box">
             <div class="input_name"><span><i></i>性别：</span></div>
-            <a-select defaultValue="男" v-model="gender" :getPopupContainer="getPopupContainer">
+            <a-select defaultValue="男" v-model="gender">
               <a-select-option value="男">男</a-select-option>
               <a-select-option value="女">女</a-select-option>
             </a-select>
@@ -83,7 +83,7 @@
                 <a-radio-group @change="radioChange(key)" v-model="radio">
                   <a-radio :value="key"></a-radio>
                 </a-radio-group>
-                {{key+1}}</td>
+                </a-radio>{{key+1}}</td>
               <td>{{item.name}}</td>
               <td>{{item.date}}</td>
               <td>{{item.address}}</td>
@@ -119,6 +119,7 @@
       components: { Pagination },
       data () {
         return {
+          gender:null,
           pagination: {
             pageNo: 1,
             pageSize: 10,
