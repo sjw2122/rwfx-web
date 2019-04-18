@@ -97,9 +97,6 @@
 
       },
       methods: {
-        /*pagePush(pageName){
-          this.$router.push({ name: pageName});
-        },*/
         side_active(){
           this.side_flag = !this.side_flag;
         },
@@ -187,12 +184,11 @@
                   //跳转到首页
                 }
               }
+              Utils.$emit(res.url);
               this.tagList.splice(index,1);
             }
             index++;
           })
-          //清除数据操作
-          Utils.$emit('PersonManageAuth');
         }
       }
     }
