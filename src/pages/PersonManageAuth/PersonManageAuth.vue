@@ -11,7 +11,7 @@
           </div>
           <div class="input_box">
             <div class="input_name"><span><i></i>性别：</span></div>
-            <a-select defaultValue="男" v-model="gender" :getPopupContainer="getPopupContainer">
+            <a-select defaultValue="男" v-model="gender">
               <a-select-option value="男">男</a-select-option>
               <a-select-option value="女">女</a-select-option>
             </a-select>
