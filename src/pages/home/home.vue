@@ -39,7 +39,7 @@
         <template v-for="(item,key) in siderList">
           <div class="menu_1" @click="sider_click(1,key,'','','')" :class="{active:menu_1_selected == key}">{{item.name}}</div>
           <template v-if="item.child != false" v-for="(child_item,key1) in item.child">
-            <div class="menu_2" @click="sider_click(2,key,key1,'','')" :class="{active:child_item.selected,active1:menu_2_selected==key+','+key1}">
+            <div class="menu_2" @click="sider_click(2,key,key1,'','',child_item.url)" :class="{active:child_item.selected,active1:menu_2_selected==key+','+key1}">
               <img :src="child_item.imgUrl">
               {{child_item.name}}
             </div>
@@ -147,6 +147,25 @@
             this.menu_2_selected = key+','+key1;
             this.menu_3_selected = null;
             this.siderList[key].child[key1].selected = !this.siderList[key].child[key1].selected;
+
+            if(url != ''){
+              this.$router.push({ name: url});
+              let str = {name:'',url:''};
+              let flag = true;
+              str.name = this.siderList[key].child[key1].name;
+              str.url = this.siderList[key].child[key1].url;
+              this.tagList.map(res =>{
+                if(res.name == str.name){
+                  flag = res;
+                }
+              })
+              if(flag == true){
+                this.tagList.push(str);
+                this.tagSelected = str.name;
+              }else{
+                this.tagSelected = flag.name;
+              }
+            }
           }
           if(type == 3){
             this.menu_1_selected = key;
