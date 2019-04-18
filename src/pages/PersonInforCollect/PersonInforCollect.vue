@@ -518,7 +518,7 @@
       search(){
         this.$api.get('http://localhost:5001/ywryjcxx/findRyjcxxByXh/01', null, r => {
           //this.list = r.data
-          alert(r.data);
+          //alert(r.data);
         })
       },
       step(num){
