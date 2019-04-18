@@ -85,7 +85,7 @@
             ]},
             {name:'人物管理',child:[
               {name:'人物管理',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[
-                {name:'人物管理',url:''},
+                {name:'人物管理2',url:''},
               ]}
             ]}
           ],
