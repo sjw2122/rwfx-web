@@ -510,7 +510,7 @@
     created () {
       this.$api.get('http://localhost:5002/sysrwlb/selectAllRwlb', null, r => {
         //this.list = r.data
-        alert(r.data);
+       // alert(r.data);
       })
 
     },
