@@ -153,7 +153,6 @@
               let flag = true;
               str.name = this.siderList[key].child[key1].name;
               str.url = this.siderList[key].child[key1].url;
-              console.log(str);
               this.tagList.map(res =>{
                 if(res.name == str.name){
                   flag = res;
@@ -211,7 +210,7 @@
                   //跳转到首页
                 }
               }
-              Utils.$emit(res.url);
+              //Utils.$emit(res.url);
               this.tagList.splice(index,1);
             }
             index++;

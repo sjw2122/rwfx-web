@@ -72,10 +72,10 @@
             </div>
           </div>-->
           <div class="collection_item" v-for="(item,key) of collection_List">
-            <div v-if="item.option == false" @click="select_item(key)" :class="{ active: item.selected == true }"><span>{{item.name}}</span></div>
+            <div v-if="item.children == false" @click="select_item(key)" :class="{ active: item.selected == true }"><span>{{item.rwlbMc}}</span></div>
             <div v-else :class="{ active: item.selected != null }">
-              <a-select :defaultValue="item.option[0].value" placeholder="请选择" :getPopupContainer="getPopupContainer" allowClear v-model="item.selected">
-                <a-select-option v-for="option of item.option" :value="option.value" >{{option.label}}</a-select-option>
+              <a-select :defaultValue="item.children[0].value" placeholder="请选择" :getPopupContainer="getPopupContainer" allowClear v-model="item.selected">
+                <a-select-option v-for="option of item.children" :value="option.id" >{{option.rwlbMc}}</a-select-option>
               </a-select>
             </div>
           </div>
@@ -490,15 +490,16 @@
       return {
         collection_step: 1,
         collection_List: [
-          {name:'统战',selected:null,option:[
-            {label:'组织部',value:'11'},
-            {label:'办公室',value:'12'},
+          {rwlbMc:'统战',selected:null,children:[
+            {rwlbMc:'组织部',id:'11'},
+            {rwlbMc:'办公室',id:'12'},
           ]},
-          {name:'无党派人士',selected:null,value:'2',option:[]},
-          {name:'党外知识分子',selected:null,value:'3',option:[]},
-          {name:'出国和归国留学人士',selected:null,value:'4',option:[]},
-          {name:'香港同胞、澳门同胞',selected:null,value:'5',option:[]}
+          {rwlbMc:'无党派人士',selected:null,id:'2',children:[]},
+          {rwlbMc:'党外知识分子',selected:null,id:'3',children:[]},
+          {rwlbMc:'出国和归国留学人士',selected:null,id:'4',children:[]},
+          {rwlbMc:'香港同胞、澳门同胞',selected:null,id:'5',children:[]}
         ],
+
         value: null,
         text1:'测试',
         step2_data: {
