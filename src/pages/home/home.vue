@@ -41,7 +41,7 @@
           <template v-if="item.child != false" v-for="(child_item,key1) in item.child">
             <div class="menu_2" @click="sider_click(2,key,key1,'','',child_item.url)" :class="{active:child_item.selected,active1:menu_2_selected==key+','+key1}">
               <img :src="child_item.imgUrl">
-              {{child_item.name}}
+              <span>{{child_item.name}}</span>
             </div>
             <div class="menu_3_box" v-if="child_item.child != false">
               <div class="menu_3" v-for="(grandson_item,key2) in child_item.child" @click="sider_click(3,key,key1,key2,grandson_item.url)" :class="{active:menu_3_selected==key+','+key1+','+key2}">

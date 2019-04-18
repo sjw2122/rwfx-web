@@ -29,7 +29,6 @@ Vue.use(InputNumber);
 
 
 
-
 Vue.prototype.$api = api
 Vue.config.productionTip = false
 
