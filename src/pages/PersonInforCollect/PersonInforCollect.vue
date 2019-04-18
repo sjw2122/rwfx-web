@@ -6,10 +6,10 @@
       -    查询页面
       -->
       <div class="content_box" v-show="collection_step == 0">
-        <div class="content_title"><img src="static/imgs/content_title/title_cx.png">查询</div>
+        <div class="content_title" ><img src="static/imgs/content_title/title_cx.png">查询</div>
         <div class="form_box">
           <div class="input_box" data-veri="">
-            <div class="input_name"><i></i><span>姓名姓名姓名姓名：</span></div>
+            <div class="input_name"><span><i></i>姓名：</span></div>
             <a-input placeholder="请输入姓名" />
             <span class="error_tip hidden">请输入姓名！</span>
           </div>
@@ -19,7 +19,7 @@
             <span class="error_tip hidden">请输入单位！</span>
           </div>
           <div class="btn_box">
-            <button class="search">查询</button>
+            <button class="search" @click="search()" >查询</button>
           </div>
         </div>
       </div>
@@ -519,11 +519,18 @@
     },
     created () {
 
+
     },
     mounted (){
 
     },
     methods: {
+      search(){
+        this.$api.get('http://localhost:5001/ywryjcxx/findRyjcxxByXh/01', null, r => {
+          //this.list = r.data
+          alert(r.data);
+        })
+      },
       step(num){
         this.collection_step = num;
       },

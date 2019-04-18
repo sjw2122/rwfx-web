@@ -76,18 +76,26 @@
             {name:'首页',child:[]},
             {name:'人物管理',child:[
               {name:'人物信息采集',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[
-                {name:'人物管理权限',url:'PersonManageAuth'},
-                {name:'人物信息采集',url:'PersonInforCollect'},
-                {name:'来自工作管理系统审批',url:''}
-              ]},
+                  {name:'人物信息采集',url:'PersonInforCollect'},
+                  {name:'采集申请列表',url:'PersonManageAuth'},
+                  {name:'人物采集列表',url:'PersonCollectList'}
+                ]},
               {name:'人物信息查询',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
-              {name:'定义历史宁波帮人士',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+              {name:'人物信息审批',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+              {name:'人物管理权限',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+              {name:'定义历史宁波帮人士(帮宁波人士）',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+              {name:'管理历史宁波帮人士（帮宁波人士）',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]}
+              ]},
+            {name:'组织管理',child:[
+              {name:'宁波统战社团组织',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+              {name:'其他社团组织',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+              {name:'党派组织',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+              {name:'工商联组织',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]}
             ]},
-            {name:'人物管理',child:[
-              {name:'人物管理',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[
-                {name:'人物管理1',url:''},
+            {name:'后台管理',child:[
+                {name:'人物类别维护',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+                {name:'人大政协届次维护',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]}
               ]}
-            ]}
           ],
           tagList:[],
           tagSelected:''
