@@ -27,8 +27,6 @@ import { InputNumber } from 'ant-design-vue';
 Vue.use(InputNumber);
 
 
-
-
 Vue.prototype.$api = api
 Vue.config.productionTip = false
 

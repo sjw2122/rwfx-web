@@ -39,7 +39,7 @@
         <template v-for="(item,key) in siderList">
           <div class="menu_1" @click="sider_click(1,key,'','','')" :class="{active:menu_1_selected == key}">{{item.name}}</div>
           <template v-if="item.child != false" v-for="(child_item,key1) in item.child">
-            <div class="menu_2" @click="sider_click(2,key,key1,'','',child_item.url)" :class="{active:child_item.selected,active1:menu_2_selected==key+','+key1}">
+            <div class="menu_2" @click="sider_click(2,key,key1,'',child_item.url)" :class="{active:child_item.selected,active1:menu_2_selected==key+','+key1}">
               <img :src="child_item.imgUrl">
               <span>{{child_item.name}}</span>
             </div>
@@ -75,12 +75,12 @@
           siderList:[
             {name:'首页',child:[]},
             {name:'人物管理',child:[
-              {name:'人物信息采集',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[
+              {name:'人物信息采集',imgUrl:'/static/imgs/home/sider_test.png',url:'',selected:false,child:[
                   {name:'人物信息采集',url:'PersonInforCollect'},
                   {name:'采集申请列表',url:'PersonManageAuth'},
                   {name:'人物采集列表',url:'PersonCollectList'}
                 ]},
-              {name:'人物信息查询',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+              {name:'人物信息查询',imgUrl:'/static/imgs/home/sider_test.png',url:'PersonCollectList',selected:false,child:[]},
               {name:'人物信息审批',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
               {name:'人物管理权限',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
               {name:'定义历史宁波帮人士(帮宁波人士）',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
@@ -147,13 +147,13 @@
             this.menu_2_selected = key+','+key1;
             this.menu_3_selected = null;
             this.siderList[key].child[key1].selected = !this.siderList[key].child[key1].selected;
-
             if(url != ''){
               this.$router.push({ name: url});
               let str = {name:'',url:''};
               let flag = true;
               str.name = this.siderList[key].child[key1].name;
               str.url = this.siderList[key].child[key1].url;
+              console.log(str);
               this.tagList.map(res =>{
                 if(res.name == str.name){
                   flag = res;
