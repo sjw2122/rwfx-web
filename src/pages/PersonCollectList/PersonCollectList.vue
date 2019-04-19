@@ -6,30 +6,30 @@
 
         <div class="input_box" data-veri="">
           <div class="input_name"><span>姓名：</span></div>
-          <a-input placeholder="请输入姓名" v-model="text1"/>
+          <a-input placeholder="请输入姓名" v-model="xm"/>
           <span class="error_tip hidden">请输入姓名！</span>
         </div>
         <div class="input_box">
           <div class="input_name"><span><i></i>性别：</span></div>
-          <a-select defaultValue="男" v-model="gender" :getPopupContainer="getPopupContainer">
+          <a-select defaultValue="男" v-model="xb" :getPopupContainer="getPopupContainer">
             <a-select-option value="男">男</a-select-option>
             <a-select-option value="女">女</a-select-option>
           </a-select>
         </div>
         <div class="input_box">
           <div class="input_name"><span><i></i>人物类别：</span></div>
-          <a-input placeholder="请输入内容" v-model="text2"/>
+          <a-input placeholder="请输入内容" v-model="rwlb"/>
         </div>
         <div class="input_box">
           <div class="input_name"><span><i></i>面貌：</span></div>
-          <a-select defaultValue="" v-model="gender" :getPopupContainer="getPopupContainer">
+          <a-select defaultValue="" v-model="zzmm" :getPopupContainer="getPopupContainer">
             <a-select-option value="中共">中共</a-select-option>
             <a-select-option value="民盟">民盟</a-select-option>
           </a-select>
         </div>
         <div class="input_box">
           <div class="input_name"><span><i></i>采集状态：</span></div>
-          <a-select defaultValue="已提交" v-model="gender" :getPopupContainer="getPopupContainer">
+          <a-select defaultValue="已提交" v-model="cjzt" :getPopupContainer="getPopupContainer">
             <a-select-option value="已提交">已提交</a-select-option>
             <a-select-option value="未提交">未提交</a-select-option>
           </a-select>
@@ -69,12 +69,17 @@
                 <a-radio :value="key"></a-radio>
               </a-radio-group>
               {{key+1}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.date}}</td>
-            <td>{{item.address}}</td>
-            <td>{{item.gender}}</td>
-            <td>{{item.data1}}</td>
-            <td>{{item.data2}}</td>
+            <td>{{item.xm}}</td>
+            <td>{{item.xb}}</td>
+            <td>{{item.csny}}</td>
+            <td>{{item.xrzw}}</td>
+            <td>{{item.rwlb}}</td>
+            <td>{{item.mz}}</td>
+            <td>{{item.hyzk}}</td>
+            <td>{{item.jg}}</td>
+            <td>{{item.zzmm}}</td>
+            <td>{{item.zgzrdw}}</td>
+            <td>修改</td>
           </tr>
         </table>
         <!--<el-table :data="tableData">
@@ -110,13 +115,16 @@
           pageSize: 10,
           totalCount: 50
         },
-        text1:'',
-        text2:'',
+        xm:'',
+        xb:'',
+        rwlb:'',
+        zzmm:'',
+        cjzt:'',
         selected:0,
         tableData: [{
           radio:true,
           date: '2016-05-02',
-          name: '张三',
+          xm: '张三',
           address: '宁波',
           gender: '男',
           data1:'汉族',
@@ -159,7 +167,6 @@
           {value: '男', label: '男'},
           {value: '女', label: '女'}
         ],
-        gender:'',
         select_value:'a',
         options: [{
           value: 'a',
@@ -183,9 +190,9 @@
     },
     methods: {
       search(){
-        this.$api.get('http://localhost:5001/ywryjcxx/findRyjcxxByXh/01', null, r => {
-          //this.list = r.data
-         // alert(r.data);
+        this.$api.post('http://localhost:5001/rwxxcj/getRwcjList', {"xm":this.xm,"xb":this.xb,"rwlb":this.rwlb,"zzmm":this.zzmm,"cjzt":this.cjzt}, r => {
+          this.tableData = r.data.list;
+          this.pagination.totalCount = r.data.size;
         })
       },
       currentChange(val){

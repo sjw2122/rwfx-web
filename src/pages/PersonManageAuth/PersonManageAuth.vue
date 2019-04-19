@@ -6,7 +6,7 @@
 
           <div class="input_box" data-veri="">
             <div class="input_name"><span><i></i>姓名：</span></div>
-            <a-input placeholder="请输入姓名" v-model="text1"/>
+            <a-input placeholder="请输入姓名" v-model="xm"/>
             <span class="error_tip hidden">请输入姓名！</span>
           </div>
           <div class="input_box">
