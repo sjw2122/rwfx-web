@@ -101,6 +101,7 @@
   import Utils from '../../until/index';
   import Pagination from '../../components/pagination.vue'
   export default {
+    name:'PersonCollectList',
     components: { Pagination },
     data () {
       return {

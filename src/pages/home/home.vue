@@ -57,17 +57,26 @@
         <span v-for="item in tagList" :class="{active:tagSelected == item.name}" @click="side_tag(item.name,item.url)">{{item.name}}<i @click.stop="close_tag(item.name)"></i></span>
       </div>
       <div class="frame" :class="{active:side_flag}">
-        <keep-alive>
-          <router-view/>
-        </keep-alive>
+
+
+          <a-config-provider :getPopupContainer="getPopupContainer">
+            <a-locale-provider :locale="local">
+              <keep-alive :include="$store.state.includePageNames">
+                <router-view/>
+              </keep-alive>
+            </a-locale-provider>
+          </a-config-provider>
+
       </div>
     </div>
 </template>
 <script type="es6">
     import Utils from '../../until/index';
+    import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN';
     export default {
       data () {
         return {
+          local:zh_CN,
           menu_1_selected:null,
           menu_2_selected:null,
           menu_3_selected:null,
@@ -81,7 +90,7 @@
                   {name:'人物采集列表',url:'PersonCollectList'}
                 ]},
               {name:'人物信息查询',imgUrl:'/static/imgs/home/sider_test.png',url:'PersonCollectList',selected:false,child:[]},
-              {name:'人物信息审批',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
+              {name:'人物信息审批',imgUrl:'/static/imgs/home/sider_test.png',url:'',selected:false,child:[]},
               {name:'人物管理权限',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
               {name:'定义历史宁波帮人士(帮宁波人士）',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
               {name:'管理历史宁波帮人士（帮宁波人士）',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]}
@@ -159,6 +168,7 @@
                 }
               })
               if(flag == true){
+                this.$store.state.includePageNames.push(str.url);
                 this.tagList.push(str);
                 this.tagSelected = str.name;
               }else{
@@ -181,6 +191,7 @@
               }
             })
             if(flag == true){
+              this.$store.state.includePageNames.push(str.url);
               this.tagList.push(str);
               this.tagSelected = str.name;
             }else{
@@ -210,11 +221,17 @@
                   //跳转到首页
                 }
               }
-              //Utils.$emit(res.url);
+
+              let i = this.$store.state.includePageNames.indexOf(res.url);
+              this.$store.state.includePageNames.splice(i,1);
+
               this.tagList.splice(index,1);
             }
             index++;
           })
+        },
+        getPopupContainer (trigger) {
+          return trigger.parentElement
         }
       }
     }

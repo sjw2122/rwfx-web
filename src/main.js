@@ -8,9 +8,7 @@ import store from './store/index'
 /*import Element from 'element-ui'
 import './styles/element-variables.scss'
 Vue.use(Element);*/
-import moment from 'moment';
-import 'moment/locale/zh-cn';
-moment.locale('zh-cn');
+
 import { LocaleProvider } from 'ant-design-vue';
 Vue.use(LocaleProvider);
 import { Input } from 'ant-design-vue';
@@ -25,6 +23,13 @@ import { Pagination } from 'ant-design-vue';
 Vue.use(Pagination);
 import { InputNumber } from 'ant-design-vue';
 Vue.use(InputNumber);
+import { ConfigProvider } from 'ant-design-vue';
+Vue.use(ConfigProvider);
+
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+moment.locale('zh-cn');
+
 
 
 Vue.prototype.$api = api

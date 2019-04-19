@@ -26,7 +26,7 @@
           </div>
           <div class="input_box">
             <div class="input_name"><span><i></i>时间：</span></div>
-            <a-date-picker :locale=$store.state.locale />
+            <a-date-picker :getCalendarContainer="getCalendarContainer" />
           </div>
           <div class="input_box">
             <div class="input_name"><span><i></i>单选：</span></div>
@@ -44,11 +44,11 @@
           </div>
           <div class="input_box">
             <div class="input_name"><span><i></i>时间：</span></div>
-            <a-date-picker />
+            <a-date-picker :getCalendarContainer="getCalendarContainer" />
           </div>
           <div class="input_box">
             <div class="input_name"><span><i></i>时间：</span></div>
-            <a-date-picker />
+            <a-date-picker :getCalendarContainer="getCalendarContainer" />
           </div>
           <div class="btn_box">
             <button class="search">查询</button>
@@ -116,6 +116,7 @@
     import Utils from '../../until/index';
     import Pagination from '../../components/pagination.vue'
     export default {
+      name:'PersonManageAuth',
       components: { Pagination },
       data () {
         return {
@@ -192,16 +193,13 @@
       },
       created () {
         let self = this;
-        Utils.$on('PersonManageAuth', function () {
-          self.text1 = null;
-        })
       },
       methods: {
         currentChange(val){
           console.log(val);
         },
-        getPopupContainer (trigger) {
-          return trigger.parentElement
+        getCalendarContainer (trigger) {
+          return trigger.parentElement;
         },
         radioChange(key){
           this.radio = key;

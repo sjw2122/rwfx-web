@@ -4,6 +4,7 @@ Vue.use(Vuex)
 
 const state = {
   test:0,
+  includePageNames:[],
   locale:{
     "lang": {
       "placeholder": "请选择日期",

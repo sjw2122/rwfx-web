@@ -31,8 +31,6 @@
           直接进入<span @click="step(1)">人物信息采集</span>
         </div>
       </div>
-
-
       <!--
       -
       -
@@ -74,7 +72,7 @@
           <div class="collection_item" v-for="(item,key) of collection_List">
             <div v-if="item.children == false" @click="select_item(key)" :class="{ active: item.selected == true }"><span>{{item.rwlbMc}}</span></div>
             <div v-else :class="{ active: item.selected != null }">
-              <a-select :defaultValue="item.children[0].value" placeholder="请选择" :getPopupContainer="getPopupContainer" allowClear v-model="item.selected">
+              <a-select :defaultValue="item.children[0].value" placeholder="请选择"  allowClear v-model="item.selected">
                 <a-select-option v-for="option of item.children" :value="option.id" >{{option.rwlbMc}}</a-select-option>
               </a-select>
             </div>
@@ -94,7 +92,7 @@
             </div>
             <div class="input_box">
               <div class="input_name"><span><i></i>性别：</span></div>
-              <a-select defaultValue="男" placeholder="请选择性别" :getPopupContainer="getPopupContainer" v-model="step2_data.gender">
+              <a-select defaultValue="男" placeholder="请选择性别"  v-model="step2_data.gender">
                 <a-select-option value="男">男</a-select-option>
                 <a-select-option value="女">女</a-select-option>
               </a-select>
@@ -132,7 +130,7 @@
               <tr v-for="(item,key) in step2_data.tableData2">
                 <td>{{key+1}}</td>
                 <td>{{item.rwlb}}</td>
-                <td><a-date-picker :locale=$store.state.locale /></td>
+                <td><a-date-picker :getCalendarContainer="getCalendarContainer"   /></td>
               </tr>
             </table>
           </div>
@@ -165,20 +163,20 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>性别：</span></div>
-                <a-select defaultValue="男" :getPopupContainer="getPopupContainer">
+                <a-select defaultValue="男">
                   <a-select-option value="男">男</a-select-option>
                   <a-select-option value="女">女</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>民族：</span></div>
-                <a-select v-model="gender" :getPopupContainer="getPopupContainer">
+                <a-select v-model="gender">
                   <a-select-option value="汉族">汉族</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>国籍：</span></div>
-                <a-select v-model="gender" :getPopupContainer="getPopupContainer">
+                <a-select v-model="gender">
                   <a-select-option value="1">中国</a-select-option>
                 </a-select>
               </div>
@@ -192,19 +190,19 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>婚姻状态：</span></div>
-                <a-select v-model="gender" :getPopupContainer="getPopupContainer">
+                <a-select v-model="gender">
                   <a-select-option value="1">未婚</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>健康状况：</span></div>
-                <a-select v-model="gender" :getPopupContainer="getPopupContainer">
+                <a-select v-model="gender">
                   <a-select-option value="1">健康</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>证件类型：</span></div>
-                <a-select v-model="gender" :getPopupContainer="getPopupContainer">
+                <a-select v-model="gender">
                   <a-select-option value="1">内地居民身份证</a-select-option>
                 </a-select>
               </div>
@@ -215,7 +213,7 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>出生年月：</span></div>
-                <a-date-picker :locale=$store.state.locale />
+                <a-date-picker :getCalendarContainer="getCalendarContainer" />
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>年龄：</span></div>
@@ -227,13 +225,13 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>政治面貌：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">群众</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>加入时间(认定时间)：</span></div>
-                <a-date-picker :locale=$store.state.locale />
+                <a-date-picker :getCalendarContainer="getCalendarContainer"   />
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>入党（社）介绍人(认定人)：</span></div>
@@ -241,7 +239,7 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>参加工作时间：</span></div>
-                <a-date-picker :locale=$store.state.locale />
+                <a-date-picker :getCalendarContainer="getCalendarContainer"   />
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>是否联谊交友对象：</span></div>
@@ -276,13 +274,13 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>状态：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">健在</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>已故时间：</span></div>
-                <a-date-picker :locale=$store.state.locale />
+                <a-date-picker :getCalendarContainer="getCalendarContainer"   />
               </div>
               <div class="input_box textarea">
                 <div class="input_name"><span><i></i>人物简历：</span></div>
@@ -302,20 +300,20 @@
               </div>
               <div class="input_box jyxgxx_input">
                 <div class="input_name"><span><i></i>全日制学历：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
                 <button>上传</button>
               </div>
               <div class="input_box jyxgxx_input">
                 <div class="input_name"><span><i></i>全日制学位：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">工科学士</a-select-option>
                 </a-select>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">工科学士</a-select-option>
                 </a-select>
                 <button>上传</button>
@@ -326,20 +324,20 @@
               </div>
               <div class="input_box jyxgxx_input">
                 <div class="input_name"><span><i></i>在职教育学历：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
                 <button>上传</button>
               </div>
               <div class="input_box jyxgxx_input">
                 <div class="input_name"><span><i></i>在职教育学位：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">工科学士</a-select-option>
                 </a-select>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">工科学士</a-select-option>
                 </a-select>
                 <button>上传</button>
@@ -368,13 +366,13 @@
                     <td>{{key+1}}</td>
                     <td><a-input placeholder="" /></td>
                     <td><a-input placeholder="" /></td>
-                    <td><a-date-picker :locale=$store.state.locale /></td>
+                    <td><a-date-picker :getCalendarContainer="getCalendarContainer"   /></td>
                   </tr>
                 </table>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>职称级别：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
               </div>
@@ -384,41 +382,41 @@
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>任现技术职称时间：</span></div>
-                <a-date-picker :locale=$store.state.locale />
+                <a-date-picker :getCalendarContainer="getCalendarContainer"   />
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>特殊人才：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>状态：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>是否体制内（公职人员）：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>行政级别：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>是否领导职务：</span></div>
-                <a-select :getPopupContainer="getPopupContainer">
+                <a-select>
                   <a-select-option value="1">本科</a-select-option>
                 </a-select>
               </div>
               <div class="input_box">
                 <div class="input_name"><span><i></i>任现职级时间：</span></div>
-                <a-date-picker :locale=$store.state.locale />
+                <a-date-picker :getCalendarContainer="getCalendarContainer"   />
               </div>
             </div>
 
@@ -486,6 +484,7 @@
 <script type="es6">
   import Until from '../../until/index'
   export default {
+    name:'PersonInforCollect',
     data () {
       return {
         collection_step: 1,
@@ -548,7 +547,7 @@
       step2_add(){
         this.step2_data.tableData1.push({xrdw: '123', zw: '321'});
       },
-      getPopupContainer(trigger){
+      getCalendarContainer (trigger) {
         return trigger.parentElement;
       }
     },
