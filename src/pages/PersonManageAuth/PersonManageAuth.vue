@@ -6,7 +6,7 @@
 
           <div class="input_box" data-veri="">
             <div class="input_name"><span><i></i>姓名：</span></div>
-            <a-input placeholder="请输入姓名" v-model="xm"/>
+            <a-input placeholder="请输入姓名"/>
             <span class="error_tip hidden">请输入姓名！</span>
           </div>
           <div class="input_box">
@@ -110,6 +110,11 @@
           @onShowSizeChange="onShowSizeChangePage"
         ></Pagination>
       </div>
+
+
+      </div>
+
+
     </div>
 </template>
 <script type="es6">

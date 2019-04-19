@@ -25,6 +25,8 @@ import { InputNumber } from 'ant-design-vue';
 Vue.use(InputNumber);
 import { ConfigProvider } from 'ant-design-vue';
 Vue.use(ConfigProvider);
+import { Tree } from 'ant-design-vue';
+Vue.use(Tree);
 
 import moment from 'moment';
 import 'moment/locale/zh-cn';

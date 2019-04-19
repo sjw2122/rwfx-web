@@ -53,11 +53,10 @@
 
       </div>
       <div class="top" :class="{active:side_flag}">
-        <span :class="{active:tagSelected == '首页'}">首页</span>
-        <span v-for="item in tagList" :class="{active:tagSelected == item.name}" @click="side_tag(item.name,item.url)">{{item.name}}<i @click.stop="close_tag(item.name)"></i></span>
+        <span :class="{active:$store.tagSelected == '首页'}">首页</span>
+        <span v-for="item in $store.state.tagList" :class="{active:$store.state.tagSelected == item.name}" @click="side_tag(item.name,item.url)">{{item.name}}<i @click.stop="close_tag(item.name)"></i></span>
       </div>
       <div class="frame" :class="{active:side_flag}">
-
 
           <a-config-provider :getPopupContainer="getPopupContainer">
             <a-locale-provider :locale="local">
@@ -76,6 +75,7 @@
     export default {
       data () {
         return {
+          untils:Utils,
           local:zh_CN,
           menu_1_selected:null,
           menu_2_selected:null,
@@ -105,13 +105,11 @@
                 {name:'人物类别维护',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]},
                 {name:'人大政协届次维护',imgUrl:'/static/imgs/home/sider_test.png',selected:false,child:[]}
               ]}
-          ],
-          tagList:[],
-          tagSelected:''
+          ]
         }
       },
       created () {
-
+        this.modal_init();
       },
       methods: {
         side_active(){
@@ -132,7 +130,7 @@
             }
             if(key == 0 && key1 == 0){
               //跳转到首页
-              this.tagSelected = '首页';
+              this.$store.state.tagSelected = '首页';
             }
             this.menu_1_selected = key;
             this.menu_2_selected = null;
@@ -162,17 +160,17 @@
               let flag = true;
               str.name = this.siderList[key].child[key1].name;
               str.url = this.siderList[key].child[key1].url;
-              this.tagList.map(res =>{
+              this.$store.state.tagList.map(res =>{
                 if(res.name == str.name){
                   flag = res;
                 }
               })
               if(flag == true){
                 this.$store.state.includePageNames.push(str.url);
-                this.tagList.push(str);
-                this.tagSelected = str.name;
+                this.$store.state.tagList.push(str);
+                this.$store.state.tagSelected = str.name;
               }else{
-                this.tagSelected = flag.name;
+                this.$store.state.tagSelected = flag.name;
               }
             }
           }
@@ -185,39 +183,39 @@
             let flag = true;
             str.name = this.siderList[key].child[key1].child[key2].name;
             str.url = this.siderList[key].child[key1].child[key2].url;
-            this.tagList.map(res =>{
+            this.$store.state.tagList.map(res =>{
               if(res.name == str.name){
                 flag = res;
               }
             })
             if(flag == true){
               this.$store.state.includePageNames.push(str.url);
-              this.tagList.push(str);
-              this.tagSelected = str.name;
+              this.$store.state.tagList.push(str);
+              this.$store.state.tagSelected = str.name;
             }else{
-              this.tagSelected = flag.name;
+              this.$store.state.tagSelected = flag.name;
             }
           }
         },
         side_tag(name,url){
-          this.tagSelected = name;
+          this.$store.state.tagSelected = name;
           this.$router.push({ name: url});
         },
         close_tag(name){
           let index = 0;
-          this.tagList.map(res =>{
+          this.$store.state.tagList.map(res =>{
             if(res.name == name){
-              if(this.tagSelected == name){
-                if(this.tagList.length > 1){
+              if(this.$store.state.tagSelected == name){
+                if(this.$store.state.tagList.length > 1){
                   if(index == 0){
-                    this.tagSelected = this.tagList[index+1].name;
-                    this.$router.push({ name: this.tagList[index+1].url});
+                    this.$store.state.tagSelected = this.$store.state.tagList[index+1].name;
+                    this.$router.push({ name: this.$store.state.tagList[index+1].url});
                   }else{
-                    this.tagSelected = this.tagList[index-1].name;
-                    this.$router.push({ name: this.tagList[index-1].url});
+                    this.$store.state.tagSelected = this.$store.state.tagList[index-1].name;
+                    this.$router.push({ name: this.$store.state.tagList[index-1].url});
                   }
                 }else{
-                  this.tagSelected = '首页';
+                  this.$store.state.tagSelected = '首页';
                   //跳转到首页
                 }
               }
@@ -225,13 +223,18 @@
               let i = this.$store.state.includePageNames.indexOf(res.url);
               this.$store.state.includePageNames.splice(i,1);
 
-              this.tagList.splice(index,1);
+              this.$store.state.tagList.splice(index,1);
             }
             index++;
           })
         },
         getPopupContainer (trigger) {
           return trigger.parentElement
+        },
+        modal_init(){
+          $(document).on('click','.modal_title i',function(){
+            $(this).parent().parent().parent().addClass('hidden');
+          })
         }
       }
     }

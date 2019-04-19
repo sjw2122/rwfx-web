@@ -10,6 +10,7 @@ const PersonManageAuth = r => require.ensure([], () => r(require('@/pages/Person
 const PersonInforCollect = r => require.ensure([], () => r(require('@/pages/PersonInforCollect/PersonInforCollect')), 'PersonInforCollect');
 const PersonCollectList = r => require.ensure([], () => r(require('@/pages/PersonCollectList/PersonCollectList')), 'PersonCollectList');
 const homePage = r => require.ensure([], () => r(require('@/pages/homePage/homePage')), 'homePage');
+const modalList = r => require.ensure([], () => r(require('@/pages/modalList/modalList')), 'modalList');
 
 Vue.use(Router)
 
@@ -62,6 +63,10 @@ export default new Router({
           path: 'homePage',
           name: 'homePage',
           component: homePage
+        },{
+          path: 'modalList',
+          name: 'modalList',
+          component: modalList
         }
        ]
     }

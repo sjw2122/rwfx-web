@@ -123,6 +123,48 @@ $tz-th-gray:#F8F8F8;
     display: block;
     clear: both;
   }
+  &.input2{
+    .input_box {
+      width: 50%;
+    }
+    .btn_box{
+      display: inline-block;
+      position: relative;
+      transform: translateX(-50%);
+      left: 50%;
+      height: 30px;
+      margin-left: 0px;
+      .search{
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        background: #F01B00;
+        color: white;
+        border-radius: 30px;
+        letter-spacing: 10px;
+        border: 1px solid #F01B00;
+        margin-right: 25px;
+        background: url("../static/imgs/common/search.png") no-repeat 12px 50% / 15px 15px $tz-red;
+        text-indent: 25px;
+      }
+      .clear{
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        background: white;
+        color: #F01B00;
+        border: 1px solid #F01B00;
+        border-radius: 30px;
+        letter-spacing: 10px;
+        text-indent: 10px;
+        border: 1px solid #F01B00;
+      }
+    }
+  }
   &.input2_button{
     .input_box{
       width: calc((100% - 100px)/2);
@@ -358,7 +400,6 @@ $tz-th-gray:#F8F8F8;
       background: white;
       color: $tz-red;
       border: 1px solid $tz-red;
-      border: 1px solid $tz-red;
     }
   }
 }
@@ -435,6 +476,90 @@ $tz-th-gray:#F8F8F8;
 }
 .ant-calendar-picker-icon{
   margin-top: -16px;
+}
+.modal_box{
+  position: fixed;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  z-index: 999;
+  .modal{
+    position: fixed;
+    width: 500px;
+    height: 300px;
+    background: white;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 3px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+    .modal_title{
+      height: 50px;
+      font-size: 18px;
+      line-height: 50px;
+      font-weight: bold;padding-left: 20px;
+      border-bottom: 1px solid #ccc;
+      position: relative;
+      i{
+        width: 15px;
+        height: 50px;
+        position: absolute;
+        right: 20px;
+        background: url("../static/imgs/common/modal_close.png") no-repeat 0 50%/ 15px 15px;
+        cursor: pointer;
+      }
+    }
+    .modal_content{
+      height: calc(100% - 40px);
+      width: 100%;
+    }
+  }
+  .modal_btn_box{
+    height: 60px;
+    background: $tz-th-gray;
+    margin-top: 60px;
+  }
+  .modal_btn_content{
+    display: inline-block;
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+    height: 30px;
+    margin-left: 0px;
+    margin-top: 10px;
+    .search{
+      display: inline-block;
+      width: 120px;
+      text-align: center;
+      height: 35px;
+      line-height: 35px;
+      background: $tz-blue;
+      color: white;
+      border-radius: 30px;
+      letter-spacing: 10px;
+      border: 1px solid $tz-blue;
+      margin-right: 100px;
+      background: $tz-blue;
+      text-indent: 10px;
+      cursor: pointer;
+    }
+    .clear{
+      display: inline-block;
+      width: 120px;
+      text-align: center;
+      height: 35px;
+      line-height: 35px;
+      background: white;
+      color: $tz-blue;
+      border: 1px solid $tz-blue;
+      border-radius: 30px;
+      letter-spacing: 10px;
+      text-indent: 10px;
+      cursor: pointer;
+    }
+  }
 }
 /**
 *
